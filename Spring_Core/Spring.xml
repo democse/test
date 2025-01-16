@@ -1,0 +1,29 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+               https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="college" class="com.pravin.College ">
+		<property name="CollegeName"
+			value="J.J.Magdum College of Engineering"></property>
+		<property name="Code" value="123"></property>
+		<property name="student1" ref="student"></property>
+		
+		</bean>
+	
+	<bean id="student" class="com.pravin.Student ">
+		<property name="Studentid" value="9999"></property>
+		<property name="StudentName" value="Aakansha"></property>
+	</bean>
+	
+	
+	
+
+
+	
+
+
+</beans>
