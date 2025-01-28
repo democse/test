@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pravin.dto.AlumniDonationDto;
+import com.pravin.dto.AlumniDto;
 import com.pravin.entity.AlumniDonationEntity;
+import com.pravin.entity.AlumniEntity;
 import com.pravin.repository.AlumniDonationRepository;
 
 @Service
@@ -27,5 +29,9 @@ public class AlumniDonationService {
 		
 		
 	}
+
+	
+
+	
 
 }

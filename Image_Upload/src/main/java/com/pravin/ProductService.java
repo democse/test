@@ -20,8 +20,6 @@ public class ProductService {
 	
 	
 	
-	public List<ProductEntity> showAllEnquires() {
-		return productrepo.findAll();
-	}
+	
 
 }

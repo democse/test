@@ -1,17 +1,16 @@
 package com.pravin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pravin.dto.AlumniDto;
 import com.pravin.dto.AlumniLogin;
-
 import com.pravin.entity.AlumniEntity;
 import com.pravin.service.AlumniService;
 
@@ -66,5 +65,21 @@ public class AlumniController {
         return "enquires";		
 	}	
 	
+	@GetMapping(value = "/editalumni/{uname}")
+	public String editenquiryDetails(@PathVariable("uname")String uname,ModelMap modelmap) {
+		AlumniEntity editEnquiryDetails = alumniservice.getalumnibyuname(uname);
+		System.out.println(editEnquiryDetails.getSn());
+		System.out.println(editEnquiryDetails.getFname());
+		System.out.println(editEnquiryDetails.getLname());
+		modelmap.addAttribute("enquiryDetails", editEnquiryDetails);
+		
+		return"edit_enquiry";
+		}
+	
+	@GetMapping("/edit")
+	public String homeEdit() {
+	return "Edit";
+	}
+
 
 }

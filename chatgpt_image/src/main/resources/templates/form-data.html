@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"></link>
+</head>
+<body>
+    <h2>Submitted Form Data</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:each="formData : ${formDataList}">
+                <tr>
+                    <td th:text="${formData.name}"></td>
+                    <td th:text="${formData.email}"></td>
+                    <td> <img th:src="@{'data:image/jpeg;base64,'+${formData.generateBase64Image()}}" alt="profile" class="..."width="100" height="200"></td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+</body>
+</html>

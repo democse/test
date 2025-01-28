@@ -2,13 +2,11 @@ package com.pravin.service;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pravin.dto.AlumniDto;
 import com.pravin.dto.AlumniLogin;
-
 import com.pravin.entity.AlumniEntity;
 import com.pravin.repository.AlumniRepository;
 
@@ -45,5 +43,22 @@ public class AlumniService {
 	public List<AlumniEntity> showAllEnquires() {
 		return alumnirepository.findAll();
 	}
+	
+	public AlumniDto alumnibyid(AlumniLogin alumnilogin) {
+		AlumniEntity userdata1 = alumnirepository.findByUname(alumnilogin.getUname());
+		AlumniDto alumnidto1=null;
+		if(userdata1 != null) {
+			 alumnidto1 = new AlumniDto();
+			alumnidto1.setFname(userdata1.getFname());
+			alumnidto1.setLname(userdata1.getLname());
+		}
+		 return alumnidto1;
+	}
+	
+	public AlumniEntity getalumnibyuname(String uname) {
+		return alumnirepository.findByUname(uname);
+		
+	}
+	
 
 }

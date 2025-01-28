@@ -7,7 +7,9 @@
 
 </head>
 <body>
-<img class='img-thumbnail' th:src="'data:image/jpeg;base64,' + ${imgUtil.getImgData(entity.imgData)}" />
+<img src="/image/1" alt="Image">
+
+
   <h4 class="text-center mt-5 bold bg-danger text-white p-3"><span th:text="${title}"></span></h4>
   
   <div class="container">
@@ -25,8 +27,8 @@
 			   <tr th:each="enq:${enquires}">
 			     <td><span th:text="${enq.sn}"></span></td>
 			     <td><span th:text="${enq.name}"></span></td>
-			     <td><span th:text="${enq.image}"></span></td>
-			    
+			   <td>
+                        <td><img th:src="@{/image/{sn}(sn=${enq.sn})}" alt="Uploaded Image" width="100"></td>
 			      </tr>			   
 			</tbody>
          </table>
