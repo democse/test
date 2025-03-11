@@ -1,6 +1,7 @@
 package com.pravin.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,11 @@ public class FormDataController {
     // Handle form submission (text + image)
     @PostMapping("/submit")
     public String submitForm(@RequestParam("name") String name,
-                             @RequestParam("email") String email,
+                             @RequestParam("email") String email,@RequestParam("ConductedDate") String conducteddate,
                              @RequestParam("image") MultipartFile image) throws IOException {
-        formDataService.saveFormData(name, email, image);
-        return "redirect:/form-data";
+    	System.out.println(conducteddate);
+        formDataService.saveFormData(name, email,conducteddate, image);
+        return "redirect:/";
     }
 
     // Display all form data along with images

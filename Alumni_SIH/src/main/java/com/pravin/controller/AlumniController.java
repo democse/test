@@ -1,13 +1,14 @@
 package com.pravin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pravin.dto.AlumniDto;
 import com.pravin.dto.AlumniLogin;
@@ -64,15 +65,15 @@ public class AlumniController {
 		modelmap.addAttribute("title","Welcome to Alumni Portal of JJMCOE ");
         return "enquires";		
 	}	
-	
-	@GetMapping(value = "/editalumni/{uname}")
-	public String editenquiryDetails(@PathVariable("uname")String uname,ModelMap modelmap) {
-		AlumniEntity editEnquiryDetails = alumniservice.getalumnibyuname(uname);
-		System.out.println(editEnquiryDetails.getSn());
-		System.out.println(editEnquiryDetails.getFname());
-		System.out.println(editEnquiryDetails.getLname());
-		modelmap.addAttribute("enquiryDetails", editEnquiryDetails);
-		
+	/*
+	@PutMapping( "/{uname}")
+	public String editenquiryDetails(@PathVariable String Uname,@RequestBody AlumniEntity updateuser,ModelMap modelmap) {
+		System.out.println(updateuser.getUname());
+		//AlumniEntity editEnquiryDetails = alumniservice.getalumnibyuname(uname);
+		//System.out.println(editEnquiryDetails.getSn()); 
+		////System.out.println(editEnquiryDetails.getFname());
+		//System.out.println(editEnquiryDetails.getLname());
+		//modelmap.addAttribute("enquiryDetails", editEnquiryDetails);
 		return"edit_enquiry";
 		}
 	
@@ -80,6 +81,23 @@ public class AlumniController {
 	public String homeEdit() {
 	return "Edit";
 	}
-
-
+*/
+	@GetMapping("/editUser") 
+	public String getUserByUsername(@RequestParam("username") String username, Model model) { 
+		AlumniEntity user = alumniservice.getUserByUsername(username); 
+	if (user != null) { 
+	model.addAttribute("user", user); 
+	return "editUser"; 
+	} 
+	model.addAttribute("error", "User not found"); 
+	return "error"; 
+	} 
+	// Handle form submission to update user details 
+	@PostMapping("/updateUser") 
+	public String updateUser(AlumniEntity user, Model model) { 
+		AlumniEntity updatedUser = alumniservice.updateUser(user); 
+	model.addAttribute("user", updatedUser); 
+	return "userDetails"; 
+	// Show updated user details 
+	} 
 }

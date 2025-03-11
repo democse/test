@@ -1,0 +1,10 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head> <title>User Details</title> </head> 
+<body> <h1>User Details</h1> 
+<p>First Name: <span th:text="${user.fname}"></span></p> 
+<p>Last Name: <span th:text="${user.lname}"></span></p> 
+<p>Username: <span th:text="${user.username}"></span></p> 
+<a href="/editUser?username=${user.username}">Edit</a> 
+</body>
+ </html>

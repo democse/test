@@ -23,6 +23,7 @@ public class AlumniService {
 		entity.setUname(alumnidto.getUname());
 		entity.setPassword(alumnidto.getPassword());
 		alumnirepository.save(entity);
+	
 		return "Data Saved Sucessfully";
 	
 		
@@ -43,7 +44,7 @@ public class AlumniService {
 	public List<AlumniEntity> showAllEnquires() {
 		return alumnirepository.findAll();
 	}
-	
+	/*
 	public AlumniDto alumnibyid(AlumniLogin alumnilogin) {
 		AlumniEntity userdata1 = alumnirepository.findByUname(alumnilogin.getUname());
 		AlumniDto alumnidto1=null;
@@ -55,10 +56,21 @@ public class AlumniService {
 		 return alumnidto1;
 	}
 	
-	public AlumniEntity getalumnibyuname(String uname) {
-		return alumnirepository.findByUname(uname);
+	public AlumniEntity getalumnibyuname(String uname,AlumniEntity aeupdate) {
+		AlumniEntity aeu =alumnirepository.findByUname(uname);
+		aeu.setFname(aeupdate.getFname());
+		aeu.setLname(aeupdate.getFname());
+		return alumnirepository.save(aeu);
 		
 	}
-	
+	*/
+	public AlumniEntity getUserByUsername(String username) { 
+		return alumnirepository.findByUname(username); 
+		} 
+		// Update user details 
+		public AlumniEntity updateUser(AlumniEntity alumnientity) { 
+		return alumnirepository.save(alumnientity); 
+		} 
+		
 
 }

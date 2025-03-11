@@ -1,5 +1,7 @@
 package com.pravin.entity;
 
+import java.util.Date;
+
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import jakarta.persistence.Entity;
@@ -21,6 +23,7 @@ public class FormData {
 
     private String name;
     private String email;
+    private String ConductedDate;
     
     @Lob
     private byte[] imageData;
