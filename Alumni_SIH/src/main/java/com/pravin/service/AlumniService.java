@@ -64,12 +64,18 @@ public class AlumniService {
 		
 	}
 	*/
-	public AlumniEntity getUserByUsername(String username) { 
-		return alumnirepository.findByUname(username); 
+	public AlumniEntity getUserByUsername(String uname) { 
+		
+		return alumnirepository.findByUname(uname); 
 		} 
 		// Update user details 
 		public AlumniEntity updateUser(AlumniEntity alumnientity) { 
 		return alumnirepository.save(alumnientity); 
+		}
+
+		public AlumniEntity saveupdateddata(AlumniEntity alumnientity) {
+			AlumniEntity saved= alumnirepository.save(alumnientity);
+			return saved;
 		} 
 		
 

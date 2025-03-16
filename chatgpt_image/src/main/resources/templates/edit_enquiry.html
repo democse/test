@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h4 class="text-center mt-5 bold bg-danger text-white p-3"><span th:text="${title}"></span></h4>
+  
+  <div class="text-center text-danger">Update Enquiry Details</div>
+  <hr/>
+  
+  <div class="container">
+  
+    <form action="#" th:action="@{/submit}" method="post" th:object="${editdetails}" enctype="multipart/form-data">
+    
+       	<!-- Add hidden form field to handle update 
+       	<input type="hidden" th:field="*{id}" />
+       <table class="table table-responsive-md" style="width:80%">-->
+          <tr>
+         <td>Id</td>
+             <td><input type="text" th:field="*{id}" class="form-control mb-4 col-4" /></td>
+          </tr>
+          <tr>
+         <td>Enquiry Name</td>
+             <td><input type="text" th:field="*{name}" class="form-control mb-4 col-4" /></td>
+          </tr>
+           <tr>
+             <td>Contact No</td>
+             <td><input type="text" th:field="*{email}" class="form-control mb-4 col-4"/> </td>
+          </tr>
+          <tr>
+             <td>Email ID</td>
+             <td><input type="text" th:field="*{ConductedDate}"class="form-control mb-4 col-4"/></td>
+          </tr>
+           <tr>
+             <td>Course</td>
+             <td> <input type="file" name="imageData"  accept="imageData"/jpeg class="form-control mb-4 col-4" /></td>
+          </tr>
+       </table>  
+       
+       <button type="submit" class="btn btn-info col-2">Update Enquiry</button>
+    
+    </form>
+     
+  </div>
+
+</body>
+</html>

@@ -14,14 +14,14 @@
   
   <div class="container">
   
-    <form action="#" th:action="@{/savedata}" method="post" th:object="${enquiryDetails}">
+    <form action="#" th:action="@{/update}" method="post" th:object="${user}">
     
        	<!-- Add hidden form field to handle update -->
      <!--  	<input type="hidden" th:field="*{uname}" />-->
        <table class="table table-responsive-md" style="width:80%">
              <tr>
              <td>SN</td>
-             <td><input type="text" th:field="*{sn}" class="form-control mb-4 col-4"/> </td>
+             <td><input type="text" th:field="*{sn}" class="form-control mb-4 col-4" readonly/> </td>
           </tr>    
           	
            <tr>
@@ -33,16 +33,16 @@
              <td><input type="text" th:field="*{lname}"class="form-control mb-4 col-4"/></td>
           </tr>
           <tr> 
-          	<!-- 
+          	
              <td>User Name</td>
-             <td><input type="text" th:field="*{uname}"class="form-control mb-4 col-4"/></td>
+             <td><input type="text" th:field="*{uname}"class="form-control mb-4 col-4" readonly/></td>
           </tr>
           <tr>
           
              <td>Password Name</td>
-             <td><input type="text" th:field="*{password}"class="form-control mb-4 col-4"/></td>
+             <td><input type="text" th:field="*{password}"class="form-control mb-4 col-4" readonly/></td>
           </tr>
-         -->
+         
           
           </table>  
        

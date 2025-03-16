@@ -1,12 +1,11 @@
 package com.pravin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -65,7 +64,7 @@ public class AlumniController {
 		modelmap.addAttribute("title","Welcome to Alumni Portal of JJMCOE ");
         return "enquires";		
 	}	
-	/*
+/*
 	@PutMapping( "/{uname}")
 	public String editenquiryDetails(@PathVariable String Uname,@RequestBody AlumniEntity updateuser,ModelMap modelmap) {
 		System.out.println(updateuser.getUname());
@@ -76,12 +75,12 @@ public class AlumniController {
 		//modelmap.addAttribute("enquiryDetails", editEnquiryDetails);
 		return"edit_enquiry";
 		}
-	
+	*/
 	@GetMapping("/edit")
 	public String homeEdit() {
 	return "Edit";
 	}
-*/
+/*
 	@GetMapping("/editUser") 
 	public String getUserByUsername(@RequestParam("username") String username, Model model) { 
 		AlumniEntity user = alumniservice.getUserByUsername(username); 
@@ -92,12 +91,24 @@ public class AlumniController {
 	model.addAttribute("error", "User not found"); 
 	return "error"; 
 	} 
+	*/
 	// Handle form submission to update user details 
-	@PostMapping("/updateUser") 
-	public String updateUser(AlumniEntity user, Model model) { 
-		AlumniEntity updatedUser = alumniservice.updateUser(user); 
-	model.addAttribute("user", updatedUser); 
-	return "userDetails"; 
+	@PostMapping("/update/{uname}") 
+	public String updateUser(@RequestParam("uname") String uname ,ModelMap modelmap) { 
+		System.out.println(uname);
+		AlumniEntity updatedUser = alumniservice.getUserByUsername(uname);
+		System.out.println(updatedUser.getSn());
+		System.out.println(updatedUser.getFname());
+		System.out.println(updatedUser.getLname());
+		
+	modelmap.addAttribute("user", updatedUser); 
+	return "edit_enquiry"; 
 	// Show updated user details 
 	} 
+	@PostMapping("/update")
+	public String updatedetails(@ModelAttribute("user") AlumniEntity alumnientity) {
+		AlumniEntity status = alumniservice.saveupdateddata(alumnientity);
+		return"redirect:/ls";
+	}
+	
 }

@@ -29,4 +29,7 @@ public class FormDataService {
         return formDataRepository.findAll();
     }
 
+    public FormData getEnquiryById(Long id) {
+		return formDataRepository.findById(id).get();
+	}
 }
