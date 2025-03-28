@@ -10,6 +10,7 @@ import com.pravin.dto.AlumniLogin;
 import com.pravin.entity.AlumniEntity;
 import com.pravin.repository.AlumniRepository;
 
+
 @Service
 public class AlumniService {
 	@Autowired
@@ -23,12 +24,8 @@ public class AlumniService {
 		entity.setUname(alumnidto.getUname());
 		entity.setPassword(alumnidto.getPassword());
 		alumnirepository.save(entity);
-	
-		return "Data Saved Sucessfully";
-	
-		
+	   return "Data Saved Sucessfully";
 	}
-
 	public AlumniDto userlogin(AlumniLogin alumnilogin) {
 		AlumniEntity userdata  = alumnirepository.findByUnameAndPassword(alumnilogin.getUname(), alumnilogin.getPassword());
 		AlumniDto alumnidto=null;
@@ -76,7 +73,14 @@ public class AlumniService {
 		public AlumniEntity saveupdateddata(AlumniEntity alumnientity) {
 			AlumniEntity saved= alumnirepository.save(alumnientity);
 			return saved;
-		} 
+		}
+		public boolean checkpresence(Integer sn) {
+			boolean c=alumnirepository.existsById(sn);
+			return c;
+			
+			
+		}
 		
 
+	
 }

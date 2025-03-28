@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -110,5 +109,23 @@ public class AlumniController {
 		AlumniEntity status = alumniservice.saveupdateddata(alumnientity);
 		return"redirect:/ls";
 	}
+	@GetMapping("/checkbyid")
+	public String check() {
+		return "checkpage";
+	}
+	
+	@PostMapping("/id")
+	public String checkpresence(@RequestParam("sn") Integer sn) {
+		System.out.println(sn);
+	boolean exist =alumniservice.checkpresence(sn);
+	System.out.println(exist);
+	if(exist) {
+		return "yes";	
+	}else {
+		return"no";
+	}
+	
+	}
+	
 	
 }
